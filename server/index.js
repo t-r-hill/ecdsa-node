@@ -42,10 +42,6 @@ app.post("/send", (req, res) => {
   setInitialNonce(senderAddress);
   setInitialNonce(recipient);
 
-  console.log(`sender = ${senderAddress}`) // Proving that this works - first tx are equal, second tx are not
-
-  // need to verify transaction - if verified then process tx
-
   if(secp.secp256k1.verify(sig, hexMessage, sender)){
     if (balances[senderAddress] < amount) {
       res.status(400).send({ message: "Not enough funds!" });

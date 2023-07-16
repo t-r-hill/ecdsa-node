@@ -13,18 +13,6 @@ function signMessage(hashedMessage, privateKey){
 }
 
 const signature = signMessage(hashedMessage, privateKey);
-
 const hexSignature = signature.toCompactHex();
 
-// const reSignature = secp.secp256k1.Signature.fromCompact(hexSignature);
-// const newSig = reSignature.addRecoveryBit(1);
-
-const publicKey = signature.recoverPublicKey(hashedMessage).toRawBytes();
-
-const address = `0x${utils.toHex(keccak256(publicKey.slice(1)).slice(-20))}`;
-
-console.log(signature);
 console.log(hexSignature);
-// console.log(newSig);
-// console.log(publicKey);
-// console.log(address);
